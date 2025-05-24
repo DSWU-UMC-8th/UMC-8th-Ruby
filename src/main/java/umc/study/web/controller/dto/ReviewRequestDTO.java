@@ -1,0 +1,26 @@
+package umc.study.web.controller.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import umc.study.validation.annotation.ExistStore;
+
+public class ReviewRequestDTO {
+
+    @Getter
+    public static class CreateDto {
+
+        @NotBlank
+        private String body;
+
+        @NotNull
+        private Float score;
+
+        @ExistStore
+        private Long storeId;
+
+        @NotNull
+        private Long memberId;
+    }
+
+}
