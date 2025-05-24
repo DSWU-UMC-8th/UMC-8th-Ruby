@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.study.apiPayload.code.status.ErrorStatus;
 import umc.study.repository.FoodCategoryRepository.FoodCategoryRepository;
+import umc.study.service.FoodCategoryService.FoodCategoryService;
 import umc.study.validation.annotation.ExistCategories;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
 
     private final FoodCategoryRepository foodCategoryRepository;
 
+    private final FoodCategoryService foodCategoryService;
+
     @Override
     public void initialize(ExistCategories constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
@@ -23,15 +26,15 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
 
     @Override
     public boolean isValid(List<Long> values, ConstraintValidatorContext context) {
-        boolean isValid = values.stream()
-                .allMatch(value -> foodCategoryRepository.existsById(value));
+        boolean isValid = foodCategoryService.categoriesExist(values);
 
         if (!isValid) {
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.FOOD_CATEGORY_NOT_FOUND.toString()).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(
+                    ErrorStatus.FOOD_CATEGORY_NOT_FOUND.toString()
+            ).addConstraintViolation();
         }
 
         return isValid;
-
     }
 }
