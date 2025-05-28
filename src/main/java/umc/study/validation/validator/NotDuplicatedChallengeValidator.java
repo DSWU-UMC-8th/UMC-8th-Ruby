@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.study.repository.MemberMissionRepository.MemberMissionRepository;
 import umc.study.validation.annotation.NotDuplicatedChallenge;
-import umc.study.web.controller.dto.ChallengeRequestDTO;
+import umc.study.web.dto.ChallengeRequestDTO;
 
 @Component
 @RequiredArgsConstructor

@@ -10,7 +10,7 @@ import umc.study.domain.Region;
 import umc.study.domain.Store;
 import umc.study.repository.RegionRepository.RegionRepository;
 import umc.study.repository.StoreRepository.StoreRepository;
-import umc.study.web.controller.dto.StoreRequestDTO;
+import umc.study.web.dto.StoreRequestDTO;
 
 @Service
 @RequiredArgsConstructor

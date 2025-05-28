@@ -14,7 +14,7 @@ import umc.study.domain.mapping.MemberMission;
 import umc.study.repository.MemberMissionRepository.MemberMissionRepository;
 import umc.study.repository.MemberRepository.MemberRepository;
 import umc.study.repository.MissionRepository.MissionRepository;
-import umc.study.web.controller.dto.ChallengeRequestDTO;
+import umc.study.web.dto.ChallengeRequestDTO;
 
 @Service
 @RequiredArgsConstructor

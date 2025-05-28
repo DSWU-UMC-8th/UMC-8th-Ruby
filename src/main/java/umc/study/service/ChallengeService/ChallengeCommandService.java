@@ -2,7 +2,7 @@ package umc.study.service.ChallengeService;
 
 
 import umc.study.domain.mapping.MemberMission;
-import umc.study.web.controller.dto.ChallengeRequestDTO;
+import umc.study.web.dto.ChallengeRequestDTO;
 
 public interface ChallengeCommandService {
     MemberMission challengeMission(ChallengeRequestDTO.CreateDto request);

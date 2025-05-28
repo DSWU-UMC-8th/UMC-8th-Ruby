@@ -4,8 +4,8 @@ package umc.study.converter;
 import umc.study.domain.Member;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
-import umc.study.web.controller.dto.ReviewRequestDTO;
-import umc.study.web.controller.dto.ReviewResponseDTO;
+import umc.study.web.dto.ReviewRequestDTO;
+import umc.study.web.dto.ReviewResponseDTO;
 
 public class ReviewConverter {
 

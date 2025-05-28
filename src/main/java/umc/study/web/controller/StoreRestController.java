@@ -15,8 +15,8 @@ import umc.study.domain.Store;
 import umc.study.service.StoreService.StoreCommandService;
 import umc.study.service.StoreService.StoreQueryService;
 import umc.study.validation.annotation.ExistStore;
-import umc.study.web.controller.dto.StoreRequestDTO;
-import umc.study.web.controller.dto.StoreResponseDTO;
+import umc.study.web.dto.StoreRequestDTO;
+import umc.study.web.dto.StoreResponseDTO;
 
 @RestController
 @RequiredArgsConstructor

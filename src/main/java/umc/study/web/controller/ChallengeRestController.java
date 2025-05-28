@@ -10,8 +10,8 @@ import umc.study.apiPayload.ApiResponse;
 import umc.study.converter.ChallengeConverter;
 import umc.study.domain.mapping.MemberMission;
 import umc.study.service.ChallengeService.ChallengeCommandService;
-import umc.study.web.controller.dto.ChallengeRequestDTO;
-import umc.study.web.controller.dto.ChallengeResponseDTO;
+import umc.study.web.dto.ChallengeRequestDTO;
+import umc.study.web.dto.ChallengeResponseDTO;
 
 @RestController
 @RequiredArgsConstructor

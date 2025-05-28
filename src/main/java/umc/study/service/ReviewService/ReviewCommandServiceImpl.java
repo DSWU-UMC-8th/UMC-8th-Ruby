@@ -13,7 +13,7 @@ import umc.study.domain.Store;
 import umc.study.repository.MemberRepository.MemberRepository;
 import umc.study.repository.ReviewRepository.ReviewRepository;
 import umc.study.repository.StoreRepository.StoreRepository;
-import umc.study.web.controller.dto.ReviewRequestDTO;
+import umc.study.web.dto.ReviewRequestDTO;
 
 @Service
 @RequiredArgsConstructor

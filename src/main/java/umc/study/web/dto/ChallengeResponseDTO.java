@@ -1,4 +1,4 @@
-package umc.study.web.controller.dto;
+package umc.study.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -4,8 +4,8 @@ import org.springframework.data.domain.Page;
 import umc.study.domain.Region;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
-import umc.study.web.controller.dto.StoreRequestDTO;
-import umc.study.web.controller.dto.StoreResponseDTO;
+import umc.study.web.dto.StoreRequestDTO;
+import umc.study.web.dto.StoreResponseDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

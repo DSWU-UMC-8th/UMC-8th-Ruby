@@ -4,7 +4,7 @@ import umc.study.domain.Member;
 import umc.study.domain.Mission;
 import umc.study.domain.enums.MissionStatus;
 import umc.study.domain.mapping.MemberMission;
-import umc.study.web.controller.dto.ChallengeResponseDTO;
+import umc.study.web.dto.ChallengeResponseDTO;
 
 public class ChallengeConverter {
 
