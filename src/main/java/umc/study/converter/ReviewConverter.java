@@ -9,7 +9,7 @@ import umc.study.web.dto.ReviewResponseDTO;
 
 public class ReviewConverter {
 
-    public static Review toReview(ReviewRequestDTO.CreateDto request, Store store, Member member) {
+    public static Review toReview(ReviewRequestDTO.CreateReviewDTO request, Store store, Member member) {
         return Review.builder()
                 .body(request.getBody())
                 .score(request.getScore())
@@ -26,6 +26,16 @@ public class ReviewConverter {
                 review.getStore().getName(),
                 review.getMember().getName()
         );
+    }
+
+    public static ReviewResponseDTO.MemberReviewDTO toMemberReviewDTO(Review review) {
+        return ReviewResponseDTO.MemberReviewDTO.builder()
+                .nickname(review.getMember().getName())
+                .storeId(review.getStore().getId())
+                .createdAt(review.getCreatedAt().toLocalDate())
+                .score(review.getScore())
+                .body(review.getBody())
+                .build();
     }
 
 }

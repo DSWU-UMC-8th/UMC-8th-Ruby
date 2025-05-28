@@ -8,7 +8,7 @@ import umc.study.validation.annotation.ExistStore;
 public class ReviewRequestDTO {
 
     @Getter
-    public static class CreateDto {
+    public static class CreateReviewDTO {
 
         @NotBlank
         private String body;

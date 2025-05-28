@@ -4,5 +4,5 @@ import umc.study.domain.Review;
 import umc.study.web.dto.ReviewRequestDTO;
 
 public interface ReviewCommandService {
-    Review createReview(ReviewRequestDTO.CreateDto request);
+    Review createReview(ReviewRequestDTO.CreateReviewDTO request);
 }

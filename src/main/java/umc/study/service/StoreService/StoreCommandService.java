@@ -4,6 +4,6 @@ import umc.study.domain.Store;
 import umc.study.web.dto.StoreRequestDTO;
 
 public interface StoreCommandService {
-    Store createStore(StoreRequestDTO.CreateDto request);
+    Store createStore(StoreRequestDTO.CreateStoreDto request);
 }
 

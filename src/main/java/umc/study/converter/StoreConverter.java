@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class StoreConverter {
 
-    public static Store toStore(StoreRequestDTO.CreateDto request, Region region) {
+    public static Store toStore(StoreRequestDTO.CreateStoreDto request, Region region) {
         return Store.builder()
                 .name(request.getName())
                 .address(request.getAddress())
