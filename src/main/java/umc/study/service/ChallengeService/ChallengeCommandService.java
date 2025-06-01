@@ -6,4 +6,5 @@ import umc.study.web.dto.ChallengeRequestDTO;
 
 public interface ChallengeCommandService {
     MemberMission challengeMission(ChallengeRequestDTO.CreateDto request);
+    void completeMission(Long memberId, Long missionId);
 }

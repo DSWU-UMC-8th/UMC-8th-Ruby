@@ -10,6 +10,7 @@ import umc.study.apiPayload.exception.handler.MissionHandler;
 import umc.study.converter.ChallengeConverter;
 import umc.study.domain.Member;
 import umc.study.domain.Mission;
+import umc.study.domain.enums.MissionStatus;
 import umc.study.domain.mapping.MemberMission;
 import umc.study.repository.MemberMissionRepository.MemberMissionRepository;
 import umc.study.repository.MemberRepository.MemberRepository;
@@ -35,5 +36,14 @@ public class ChallengeCommandServiceImpl implements ChallengeCommandService {
 
         MemberMission mm = ChallengeConverter.toMemberMission(member, mission);
         return memberMissionRepository.save(mm);
+    }
+
+    @Override
+    @Transactional
+    public void completeMission(Long memberId, Long missionId) {
+        MemberMission mm = memberMissionRepository.findByMemberIdAndMissionId(memberId, missionId)
+                .orElseThrow(() -> new MissionHandler(ErrorStatus.MISSION_NOT_FOUND));
+
+        mm.changeStatus(MissionStatus.COMPLETE);
     }
 }

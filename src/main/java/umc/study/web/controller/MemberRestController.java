@@ -12,6 +12,7 @@ import umc.study.converter.MemberConverter;
 import umc.study.converter.MissionConverter;
 import umc.study.converter.ReviewConverter;
 import umc.study.domain.Member;
+import umc.study.service.ChallengeService.ChallengeCommandService;
 import umc.study.service.MemberService.MemberCommandService;
 import umc.study.service.MissionService.MissionQueryService;
 import umc.study.service.ReviewService.ReviewQueryService;
@@ -29,6 +30,7 @@ public class MemberRestController {
     private final MemberCommandService memberCommandService;
     private final ReviewQueryService reviewQueryService;
     private final MissionQueryService missionQueryService;
+    private final ChallengeCommandService challengeCommandService;
 
     @PostMapping("/")
     public ApiResponse<MemberResponseDTO.JoinResultDTO> join(@RequestBody @Valid MemberRequestDTO.JoinDto request) {
@@ -63,5 +65,13 @@ public class MemberRestController {
         return ApiResponse.onSuccess(
                 MissionConverter.toPreviewListDTO(missionQueryService.getMyMissions(memberId, page - 1))
         );
+    }
+
+    @PostMapping("/{memberId}/missions/{missionId}/complete")
+    @Operation(summary = "미션 진행 완료 처리 API", description = "진행중인 미션을 완료 상태로 변경합니다.")
+    public ApiResponse<String> completeMission(@PathVariable(name = "memberId") Long memberId,
+                                               @PathVariable(name = "missionId") Long missionId) {
+        challengeCommandService.completeMission(memberId, missionId);
+        return ApiResponse.onSuccess("미션 완료 처리되었습니다.");
     }
 }
