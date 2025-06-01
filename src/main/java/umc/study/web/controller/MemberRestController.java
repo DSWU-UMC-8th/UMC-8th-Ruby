@@ -9,13 +9,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import umc.study.apiPayload.ApiResponse;
 import umc.study.converter.MemberConverter;
+import umc.study.converter.MissionConverter;
 import umc.study.converter.ReviewConverter;
 import umc.study.domain.Member;
 import umc.study.service.MemberService.MemberCommandService;
+import umc.study.service.MissionService.MissionQueryService;
 import umc.study.service.ReviewService.ReviewQueryService;
 import umc.study.validation.annotation.ValidPage;
 import umc.study.web.dto.MemberRequestDTO;
 import umc.study.web.dto.MemberResponseDTO;
+import umc.study.web.dto.MissionResponseDTO;
 import umc.study.web.dto.ReviewResponseDTO;
 
 @RestController
@@ -25,6 +28,7 @@ public class MemberRestController {
 
     private final MemberCommandService memberCommandService;
     private final ReviewQueryService reviewQueryService;
+    private final MissionQueryService missionQueryService;
 
     @PostMapping("/")
     public ApiResponse<MemberResponseDTO.JoinResultDTO> join(@RequestBody @Valid MemberRequestDTO.JoinDto request) {
@@ -44,6 +48,20 @@ public class MemberRestController {
         return ApiResponse.onSuccess(
                 reviewQueryService.getMyReviews(memberId, page - 1)
                         .map(ReviewConverter::toMemberReviewDTO)
+        );
+    }
+
+    @GetMapping("/{memberId}/missions")
+    @Operation(summary = "내가 진행중인 미션 목록 조회 API", description = "내가 진행중인 미션들의 목록을 조회하는 API이며, 페이징을 포함합니다. Query String으로 page를 전달하세요.")
+    @Parameters({
+            @Parameter(name = "page", description = "1 이상 정수 페이지")
+    })
+    public ApiResponse<MissionResponseDTO.MissionPreviewListDTO> getMyMissions(
+            @PathVariable(name = "memberId") Long memberId,
+            @ValidPage @RequestParam(name = "page") Integer page
+    ) {
+        return ApiResponse.onSuccess(
+                MissionConverter.toPreviewListDTO(missionQueryService.getMyMissions(memberId, page - 1))
         );
     }
 }
